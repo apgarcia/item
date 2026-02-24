@@ -4,9 +4,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`item` is a stupidly simple Google Tasks CLI. It is currently **unimplemented** — only a `spec` file exists describing the desired behavior.
+`item` is a stupidly simple Google Tasks CLI.
 
-## Spec Summary
+## Commands
+
+```
+item ls [-a] [-m]          # list tasks; -a includes completed, -m outputs Markdown checklist
+item mk "text" [--due YYYY-MM-DD]   # create task
+item rm KEY                # mark task completed (e.g. 2, 1a)
+item rm -f KEY             # hard delete an open task
+item rm -fa KEY            # hard delete a completed task (KEY matches ls -a numbering)
+item ed KEY "title"        # replace task title
+item mv SRC DST            # reorder open tasks by key
+item id                    # list all Google Task lists
+item use LIST_ID           # set the default task list
+item mklist "name"         # create a new task list
+item rmlist [LIST_ID]      # delete a task list (defaults to current)
+```
 
 ### Hierarchy-Aware Numbering
 
@@ -14,19 +28,6 @@ Tasks use positional keys:
 - Top-level: `1`, `2`, `3`, ...
 - Subtasks: `1a`, `1b`, `1c`, ...
 - Deeper levels: `1aa`, `1ab`, ...
-
-### Commands
-
-```
-item ls [-a] [-m]          # list tasks; -a includes completed, -m outputs Markdown checklist
-item mk "text" [--due YYYY-MM-DD]   # create task
-item rm KEY                # mark task completed (e.g. 2, 1a)
-item rm -f KEY             # hard delete task
-item ed KEY "title"        # replace task title
-item mv SRC DST            # reorder open tasks by key
-item id                    # list all Google Task lists
-item use LIST_ID           # set the default task list
-```
 
 ### List Selection
 
