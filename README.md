@@ -46,15 +46,15 @@ The first time you run any `item` command, a browser window will open for Google
 ## Usage
 
 ```
-item ls [-a] [-m]           list tasks (-a: include done, -m: markdown output)
+item id                     list all task lists
+item use LIST_ID            set the default task list
 item mk "text" [--due DATE] create a task (date format: YYYY-MM-DD)
+item ed KEY "new title"     replace a task's title
+item ls [-a] [-m]           list tasks (-a: include done, -m: markdown output)
+item mv SRC DST             reorder tasks (SRC becomes position DST)
 item rm KEY                 mark a task complete (visible with ls -a)
 item rm -f KEY              hard delete an open task (gone permanently)
 item rm -fa KEY             hard delete a completed task (KEY matches ls -a numbering)
-item ed KEY "new title"     replace a task's title
-item mv SRC DST             reorder tasks (SRC becomes position DST)
-item id                     list all task lists
-item use LIST_ID            set the default task list
 item mklist "name"          create a new task list
 item rmlist [LIST_ID]       delete a task list (defaults to current)
 ```
@@ -65,16 +65,6 @@ Tasks are identified by hierarchical keys:
 1, 2, 3, ...        top-level tasks
 1a, 1b, ..., 1z     subtasks of task 1
 1aa, 1ab, ...       subtasks 27+ of task 1
-```
-
-### Manage task lists
-
-```bash
-item id                     # show all lists and their IDs
-item use LIST_ID            # save as default
-item mklist "Work"          # create a new list (prints its ID)
-item rmlist                 # delete the current list
-item rmlist LIST_ID         # delete a specific list
 ```
 
 The active list is stored in `~/.config/item/config.json`.
