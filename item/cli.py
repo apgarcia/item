@@ -268,8 +268,8 @@ def id_cmd() -> None:
     default_id = get_list_id()
     resp = svc.tasklists().list(maxResults=100).execute()
     for tl in resp.get("items", []):
-        marker = " *" if tl["id"] == default_id else ""
-        print(f"{tl['title']:<30} {tl['id']}{marker}")
+        title = tl["title"] + ("*" if tl["id"] == default_id else "")
+        print(f"{title:<30} {tl['id']}")
 
 
 @cli.command("use")
