@@ -180,7 +180,12 @@ def mk(text: str, due: str | None) -> None:
 @click.option("-f", "--force", is_flag=True, help="Hard delete instead of marking complete.")
 @click.option("-a", "--all", "show_all", is_flag=True, help="Include completed tasks when resolving KEY (matches 'ls -a' numbering).")
 def rm(key: str, force: bool, show_all: bool) -> None:
-    """Complete or delete a task."""
+    """Mark a task complete, or hard delete it with -f.
+
+    By default KEY is resolved against open tasks. Pass -a to resolve against
+    all tasks (matching 'ls -a' numbering), e.g. to hard delete a completed
+    task with -fa.
+    """
     list_id = _require_list()
     svc = _service()
     tree = _build_tree(_get_tasks(svc, list_id, include_completed=show_all))
