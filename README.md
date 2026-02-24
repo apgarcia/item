@@ -49,7 +49,8 @@ The first time you run any `item` command, a browser window will open for Google
 item ls [-a] [-m]           list tasks (-a: include done, -m: markdown output)
 item mk "text" [--due DATE] create a task (date format: YYYY-MM-DD)
 item rm KEY                 mark a task complete (visible with ls -a)
-item rm -f KEY              hard delete a task (gone permanently)
+item rm -f KEY              hard delete an open task (gone permanently)
+item rm -fa KEY             hard delete a completed task (KEY matches ls -a numbering)
 item ed KEY "new title"     replace a task's title
 item mv SRC DST             reorder tasks (SRC becomes position DST)
 item id                     list all task lists
