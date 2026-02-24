@@ -265,9 +265,11 @@ def mv(src: str, dst: str) -> None:
 def id_cmd() -> None:
     """List all task lists."""
     svc = _service()
+    default_id = get_list_id()
     resp = svc.tasklists().list(maxResults=100).execute()
     for tl in resp.get("items", []):
-        print(f"{tl['title']:<30} {tl['id']}")
+        marker = " *" if tl["id"] == default_id else ""
+        print(f"{tl['title']:<30} {tl['id']}{marker}")
 
 
 @cli.command("use")
